@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is Array.fromAsync()? | Array.fromAsync() explained</title>
+<meta name="description" content="Array.fromAsync() is Array.from() that knows how to wait: it turns async generators, streams and arrays of promises into a normal array.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/the-idea.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/syntax.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="What is Array.fromAsync()? | Array.fromAsync() explained">
+<meta property="og:description" content="Array.fromAsync() is Array.from() that knows how to wait: it turns async generators, streams and arrays of promises into a normal array.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/the-idea.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What is Array.fromAsync()? | Array.fromAsync() explained">
+<meta name="twitter:description" content="Array.fromAsync() is Array.from() that knows how to wait: it turns async generators, streams and arrays of promises into a normal array.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "The idea",
+      "item": "https://viveksambath.github.io/array-fromAsync/the-idea.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide gray">
+  <p class="eyebrow">The idea</p>
+  <h1>It’s <code>Array.from()</code> that knows how to wait</h1>
+  <div class="flow" role="img" aria-label="Async data goes into Array.fromAsync, which returns a promise of an array">
+    <div class="node"><span class="label">input</span><span class="val">async data</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="node solid"><span class="label">await</span><span class="val">Array.fromAsync()</span></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="node"><span class="label">output</span><span class="val">[ a, b, c ]</span></div>
+  </div>
+  <p>The input can be an async generator, a stream, an array of promises, or anything you can loop over.</p>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="./" aria-label="Previous: Intro">← <span class="nav-label">Intro</span></a>
+    <span>02 / 11</span>
+    <a rel="next" href="syntax.html" aria-label="Next: Syntax"><span class="nav-label">Syntax</span> →</a>
+  </nav>
+</main>
+</body>
+</html>

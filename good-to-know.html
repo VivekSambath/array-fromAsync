@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Array.fromAsync() errors and browser support</title>
+<meta name="description" content="How Array.fromAsync() handles errors and infinite sources, and which browsers support it: Chrome and Edge 121, Firefox 115, Safari 16.4, Node.js 22.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/good-to-know.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/remember.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="Array.fromAsync() errors and browser support">
+<meta property="og:description" content="How Array.fromAsync() handles errors and infinite sources, and which browsers support it: Chrome and Edge 121, Firefox 115, Safari 16.4, Node.js 22.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/good-to-know.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Array.fromAsync() errors and browser support">
+<meta name="twitter:description" content="How Array.fromAsync() handles errors and infinite sources, and which browsers support it: Chrome and Edge 121, Firefox 115, Safari 16.4, Node.js 22.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Good to know",
+      "item": "https://viveksambath.github.io/array-fromAsync/good-to-know.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide">
+  <p class="eyebrow">Good to know</p>
+  <h1>Before you ship it</h1>
+  <div class="grid">
+    <div class="card">
+      <h2>Errors</h2>
+      <p>If any item or <code>mapFn</code> fails, the whole promise rejects. Wrap it in <code>try / catch</code>.</p>
+    </div>
+    <div class="card">
+      <h2>Infinite sources</h2>
+      <p>An endless generator never finishes, so the promise never resolves.</p>
+    </div>
+    <div class="card">
+      <h2>Support</h2>
+      <p>Chrome / Edge 121, Firefox 115, Safari 16.4, Node.js 22.</p>
+    </div>
+  </div>
+  <p>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" rel="noopener">MDN · Array.fromAsync()</a></p>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="remember.html" aria-label="Previous: Remember">← <span class="nav-label">Remember</span></a>
+    <span>11 / 11</span>
+    <a href="./" aria-label="Back to start"><span class="nav-label">Back to start</span> ↺</a>
+  </nav>
+</main>
+</body>
+</html>

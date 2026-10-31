@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When to use Array.fromAsync() or Promise.all()</title>
+<meta name="description" content="Use Array.fromAsync() for async generators, streams, paginated APIs and ordered work; use Promise.all() for independent tasks.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/which-to-use.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/vs-promise-all.html">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/remember.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="When to use Array.fromAsync() or Promise.all()">
+<meta property="og:description" content="Use Array.fromAsync() for async generators, streams, paginated APIs and ordered work; use Promise.all() for independent tasks.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/which-to-use.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="When to use Array.fromAsync() or Promise.all()">
+<meta name="twitter:description" content="Use Array.fromAsync() for async generators, streams, paginated APIs and ordered work; use Promise.all() for independent tasks.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Which to use",
+      "item": "https://viveksambath.github.io/array-fromAsync/which-to-use.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide">
+  <p class="eyebrow">Which one should I use?</p>
+  <h1>Pick by the shape of your data</h1>
+  <div class="grid">
+    <div class="card">
+      <h2>Use Array.fromAsync()</h2>
+      <ul>
+        <li>Async generators and streams</li>
+        <li>Paginated APIs</li>
+        <li>Order matters</li>
+        <li>One request at a time</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Use Promise.all()</h2>
+      <ul>
+        <li>Independent tasks</li>
+        <li>You want the fastest result</li>
+        <li>An array of promises that are already running</li>
+      </ul>
+    </div>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="vs-promise-all.html" aria-label="Previous: vs Promise.all()">← <span class="nav-label">vs Promise.all()</span></a>
+    <span>09 / 11</span>
+    <a rel="next" href="remember.html" aria-label="Next: Remember"><span class="nav-label">Remember</span> →</a>
+  </nav>
+</main>
+</body>
+</html>

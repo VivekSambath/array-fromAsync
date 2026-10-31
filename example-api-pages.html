@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example: load every page of an API with Array.fromAsync()</title>
+<meta name="description" content="A real example: use an async generator and Array.fromAsync() to load every page of users from a paginated API into one array.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/example-api-pages.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/how-it-works.html">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/example-cart.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="Example: load every page of an API with Array.fromAsync()">
+<meta property="og:description" content="A real example: use an async generator and Array.fromAsync() to load every page of users from a paginated API into one array.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/example-api-pages.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Example: load every page of an API with Array.fromAsync()">
+<meta name="twitter:description" content="A real example: use an async generator and Array.fromAsync() to load every page of users from a paginated API into one array.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Example: API pages",
+      "item": "https://viveksambath.github.io/array-fromAsync/example-api-pages.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide">
+  <p class="eyebrow">Real example 1 · API pages</p>
+  <div class="split">
+    <div class="stack">
+      <h1>Load every page of users</h1>
+      <p>The API returns 20 users per page. A generator fetches page after page until a page comes back empty.</p>
+      <p><code>fromAsync</code> collects them all into one list.</p>
+    </div>
+<pre><code><span class="k">async function*</span> <span class="f">getUsers</span>() {
+  <span class="k">let</span> page = <span class="s">1</span>;
+  <span class="k">while</span> (<span class="k">true</span>) {
+    <span class="k">const</span> res = <span class="k">await</span> <span class="f">fetch</span>(<span class="s">`/api/users?page=${page}`</span>);
+    <span class="k">const</span> users = <span class="k">await</span> res.<span class="f">json</span>();
+    <span class="k">if</span> (users.length === <span class="s">0</span>) <span class="k">return</span>;
+    <span class="k">yield*</span> users;
+    page++;
+  }
+}
+
+<span class="k">const</span> allUsers = <span class="k">await</span> <span class="f">Array.fromAsync</span>(<span class="f">getUsers</span>());
+<span class="c">// [{ id: 1, … }, { id: 2, … }, …]</span></code></pre>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="how-it-works.html" aria-label="Previous: How it works">← <span class="nav-label">How it works</span></a>
+    <span>05 / 11</span>
+    <a rel="next" href="example-cart.html" aria-label="Next: Example: cart"><span class="nav-label">Example: cart</span> →</a>
+  </nav>
+</main>
+</body>
+</html>

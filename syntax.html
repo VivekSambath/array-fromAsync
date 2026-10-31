@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Array.fromAsync() syntax and parameters | Array.fromAsync() explained</title>
+<meta name="description" content="The syntax of Array.fromAsync(items, mapFn, thisArg): what each parameter does and why it always returns a Promise.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/syntax.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/the-idea.html">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/how-it-works.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="Array.fromAsync() syntax and parameters | Array.fromAsync() explained">
+<meta property="og:description" content="The syntax of Array.fromAsync(items, mapFn, thisArg): what each parameter does and why it always returns a Promise.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/syntax.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Array.fromAsync() syntax and parameters | Array.fromAsync() explained">
+<meta name="twitter:description" content="The syntax of Array.fromAsync(items, mapFn, thisArg): what each parameter does and why it always returns a Promise.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Syntax",
+      "item": "https://viveksambath.github.io/array-fromAsync/syntax.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide">
+  <p class="eyebrow">Syntax</p>
+  <h1>One line, three arguments</h1>
+<pre><code><span class="k">const</span> array = <span class="k">await</span> <span class="f">Array.fromAsync</span>(items, mapFn?, thisArg?);</code></pre>
+  <ul>
+    <li><code>items</code>: what you want to turn into an array</li>
+    <li><code>mapFn</code>: optional, changes each item (it can be async)</li>
+    <li>It always returns a <code>Promise</code>, so use <code>await</code></li>
+  </ul>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="the-idea.html" aria-label="Previous: The idea">← <span class="nav-label">The idea</span></a>
+    <span>03 / 11</span>
+    <a rel="next" href="how-it-works.html" aria-label="Next: How it works"><span class="nav-label">How it works</span> →</a>
+  </nav>
+</main>
+</body>
+</html>

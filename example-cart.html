@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example: fetch product details with an async mapFn | Array.fromAsync()</title>
+<meta name="description" content="A real example: pass an async mapFn to Array.fromAsync() to fetch product details for a cart, one request at a time.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/example-cart.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/example-api-pages.html">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/example-node-file.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="Example: fetch product details with an async mapFn | Array.fromAsync()">
+<meta property="og:description" content="A real example: pass an async mapFn to Array.fromAsync() to fetch product details for a cart, one request at a time.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/example-cart.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Example: fetch product details with an async mapFn | Array.fromAsync()">
+<meta name="twitter:description" content="A real example: pass an async mapFn to Array.fromAsync() to fetch product details for a cart, one request at a time.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Example: cart",
+      "item": "https://viveksambath.github.io/array-fromAsync/example-cart.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide gray">
+  <p class="eyebrow">Real example 2 · cart items</p>
+  <div class="split">
+    <div class="stack">
+      <h1>Get product details for a cart</h1>
+      <p>You have product IDs and need the full details for each one.</p>
+      <p>The async <code>mapFn</code> sends one request at a time, which goes easy on a rate-limited API.</p>
+    </div>
+<pre><code><span class="k">const</span> cartIds = [<span class="s">101</span>, <span class="s">102</span>, <span class="s">103</span>];
+
+<span class="k">const</span> products = <span class="k">await</span> <span class="f">Array.fromAsync</span>(
+  cartIds,
+  <span class="k">async</span> (id) =&gt; {
+    <span class="k">const</span> res = <span class="k">await</span> <span class="f">fetch</span>(<span class="s">`/api/products/${id}`</span>);
+    <span class="k">return</span> res.<span class="f">json</span>();
+  },
+);
+<span class="c">// [{ id: 101, name: "Mug" }, …]</span></code></pre>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="example-api-pages.html" aria-label="Previous: Example: API pages">← <span class="nav-label">Example: API pages</span></a>
+    <span>06 / 11</span>
+    <a rel="next" href="example-node-file.html" aria-label="Next: Example: Node.js file"><span class="nav-label">Example: Node.js file</span> →</a>
+  </nav>
+</main>
+</body>
+</html>
