@@ -13,7 +13,6 @@ const slides = [
     file: "index.html",
     title: "Array.fromAsync() explained: simple guide with examples",
     description: "A simple, visual guide to JavaScript’s Array.fromAsync(): what it does, how it works, real examples, and how it compares with Promise.all().",
-    theme: "",
     nav: "Intro",
     body: `
   <p class="eyebrow">JavaScript · ES2024</p>
@@ -25,7 +24,6 @@ const slides = [
     file: "the-idea.html",
     title: "What is Array.fromAsync()? | Array.fromAsync() explained",
     description: "Array.fromAsync() is Array.from() that knows how to wait: it turns async generators, streams and arrays of promises into a normal array.",
-    theme: "gray",
     nav: "The idea",
     body: `
   <p class="eyebrow">The idea</p>
@@ -43,7 +41,6 @@ const slides = [
     file: "syntax.html",
     title: "Array.fromAsync() syntax and parameters | Array.fromAsync() explained",
     description: "The syntax of Array.fromAsync(items, mapFn, thisArg): what each parameter does and why it always returns a Promise.",
-    theme: "",
     nav: "Syntax",
     body: `
   <p class="eyebrow">Syntax</p>
@@ -59,7 +56,6 @@ const slides = [
     file: "how-it-works.html",
     title: "How Array.fromAsync() works, step by step | Array.fromAsync() explained",
     description: "Array.fromAsync() handles one item at a time, in order: get the item, wait for it, run mapFn, push it, and return the array when done.",
-    theme: "gray",
     nav: "How it works",
     body: `
   <p class="eyebrow">How it works</p>
@@ -77,7 +73,6 @@ const slides = [
     file: "example-api-pages.html",
     title: "Example: load every page of an API with Array.fromAsync()",
     description: "A real example: use an async generator and Array.fromAsync() to load every page of users from a paginated API into one array.",
-    theme: "",
     nav: "Example: API pages",
     body: `
   <p class="eyebrow">Real example 1 · API pages</p>
@@ -106,7 +101,6 @@ const slides = [
     file: "example-cart.html",
     title: "Example: fetch product details with an async mapFn | Array.fromAsync()",
     description: "A real example: pass an async mapFn to Array.fromAsync() to fetch product details for a cart, one request at a time.",
-    theme: "gray",
     nav: "Example: cart",
     body: `
   <p class="eyebrow">Real example 2 · cart items</p>
@@ -132,7 +126,6 @@ const slides = [
     file: "example-node-file.html",
     title: "Example: read a file into lines in Node.js | Array.fromAsync()",
     description: "A real example: read a text file into an array of lines in Node.js by passing a readline interface to Array.fromAsync().",
-    theme: "",
     nav: "Example: Node.js file",
     body: `
   <p class="eyebrow">Real example 3 · Node.js file</p>
@@ -156,7 +149,6 @@ const slides = [
     file: "vs-promise-all.html",
     title: "Array.fromAsync() vs Promise.all(): sequential vs concurrent",
     description: "A timeline diagram comparing Array.fromAsync(), which waits for one item at a time, with Promise.all(), which waits for all at once.",
-    theme: "gray",
     nav: "vs Promise.all()",
     body: `
   <p class="eyebrow">Compared with Promise.all()</p>
@@ -185,7 +177,6 @@ const slides = [
     file: "which-to-use.html",
     title: "When to use Array.fromAsync() or Promise.all()",
     description: "Use Array.fromAsync() for async generators, streams, paginated APIs and ordered work; use Promise.all() for independent tasks.",
-    theme: "",
     nav: "Which to use",
     body: `
   <p class="eyebrow">Which one should I use?</p>
@@ -214,7 +205,6 @@ const slides = [
     file: "remember.html",
     title: "The one rule to remember | Array.fromAsync() explained",
     description: "If you can loop over it with for await, Array.fromAsync() can turn it into an array.",
-    theme: "gray",
     nav: "Remember",
     body: `
   <p class="eyebrow">Remember</p>
@@ -224,7 +214,6 @@ const slides = [
     file: "good-to-know.html",
     title: "Array.fromAsync() errors and browser support",
     description: "How Array.fromAsync() handles errors and infinite sources, and which browsers support it: Chrome and Edge 121, Firefox 115, Safari 16.4, Node.js 22.",
-    theme: "",
     nav: "Good to know",
     body: `
   <p class="eyebrow">Good to know</p>
@@ -324,7 +313,7 @@ ${prev ? `<link rel="prev" href="${url(prev.file)}">\n` : ""}${next ? `<link rel
 <script src="nav.js" defer></script>${jsonLd}
 </head>
 <body>
-<main class="slide${s.theme ? " " + s.theme : ""}">
+<main class="slide">
 ${s.body.replace(/^\n/, "")}
 
   <nav class="deck-nav" aria-label="Slides">

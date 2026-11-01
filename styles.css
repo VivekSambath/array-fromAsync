@@ -9,11 +9,11 @@ html, body { background: #0e0e10; }
 
 body { font-family: var(--sans); }
 
-/* ---------- slide themes ---------- */
-/* dark (default) */
+/* ---------- theme: one dark background, gray surfaces ---------- */
 .slide {
   --page: #0e0e10;
   --surface: #18181b;
+  --raised: #2a2a2f;   /* highlighted box */
   --line: #2a2a2f;
   --muted: #8b8b94;
   --text-2: #b9b9c0;
@@ -21,20 +21,6 @@ body { font-family: var(--sans); }
   --bar: #b9b9c0;
   --bar-text: #0e0e10;
   --bar-dim: #4a4a52;
-  --bar-dim-text: #f4f4f5;
-}
-
-/* gray */
-.slide.gray {
-  --page: #1e1e22;
-  --surface: #2a2a2f;
-  --line: #3a3a41;
-  --muted: #9a9aa3;
-  --text-2: #c4c4cb;
-  --text: #f4f4f5;
-  --bar: #c4c4cb;
-  --bar-text: #0e0e10;
-  --bar-dim: #55555d;
   --bar-dim-text: #f4f4f5;
 }
 
@@ -175,9 +161,8 @@ pre {
 }
 .node .label { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .node .val { font-family: var(--mono); font-size: clamp(16px, 1.6vw, 22px); color: var(--text); }
-.node.solid { background: var(--text); border-color: var(--text); }
-.node.solid .label { color: #55555d; }
-.node.solid .val { color: var(--page); font-weight: 600; }
+.node.solid { background: var(--raised); border-color: var(--text-2); }
+.node.solid .val { font-weight: 600; }
 .arrow { font-size: 32px; color: var(--muted); }
 
 /* ---------- diagram: step pipeline ---------- */
@@ -199,8 +184,8 @@ pre {
 }
 .step .num { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .step p { font-size: clamp(15px, 1.4vw, 19px); color: var(--text); }
-.step:last-child { border-right: none; background: var(--text); }
-.step:last-child p, .step:last-child .num { color: var(--page); }
+.step:last-child { border-right: none; background: var(--raised); }
+.step:last-child p { font-weight: 500; }
 
 /* ---------- diagram: timeline bars ---------- */
 .timeline { display: flex; flex-direction: column; gap: 28px; }
