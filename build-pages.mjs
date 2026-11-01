@@ -123,29 +123,6 @@ const slides = [
   </div>`,
   },
   {
-    file: "example-node-file.html",
-    title: "Example: read a file into lines in Node.js | Array.fromAsync()",
-    description: "A real example: read a text file into an array of lines in Node.js by passing a readline interface to Array.fromAsync().",
-    nav: "Example: Node.js file",
-    body: `
-  <p class="eyebrow">Real example 3 · Node.js file</p>
-  <div class="split">
-    <div class="stack">
-      <h1>Read a file into an array of lines</h1>
-      <p>The <code>readline</code> interface is an async iterable, so you can pass it straight in.</p>
-    </div>
-<pre><code><span class="k">import</span> fs <span class="k">from</span> <span class="s">"node:fs"</span>;
-<span class="k">import</span> readline <span class="k">from</span> <span class="s">"node:readline"</span>;
-
-<span class="k">const</span> rl = readline.<span class="f">createInterface</span>({
-  input: fs.<span class="f">createReadStream</span>(<span class="s">"todo.txt"</span>),
-});
-
-<span class="k">const</span> lines = <span class="k">await</span> <span class="f">Array.fromAsync</span>(rl);
-<span class="c">// ["Buy milk", "Call mom", "Ship it"]</span></code></pre>
-  </div>`,
-  },
-  {
     file: "vs-promise-all.html",
     title: "Array.fromAsync() vs Promise.all(): sequential vs concurrent",
     description: "A timeline diagram comparing Array.fromAsync(), which waits for one item at a time, with Promise.all(), which waits for all at once.",
