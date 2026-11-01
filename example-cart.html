@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script src="nav.js" defer></script>
+<script src="demo.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,6 +68,20 @@
   },
 );
 <span class="c">// [{ id: 101, name: "Mug" }, …]</span></code></pre>
+  </div>
+  <div class="demo" data-demo="cart">
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run simulation</button>
+      <label><input type="checkbox" name="fail"> Make 102 fail</label>
+      <label>On error:
+        <select name="mode">
+          <option value="stop">no catch (stops)</option>
+          <option value="skip">catch in mapFn (skips)</option>
+        </select>
+      </label>
+      <span class="demo-note">Fake API, 300 ms per request</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to watch one request at a time. Tick “Make 102 fail” to see what an error does.</pre>
   </div>
 
   <nav class="deck-nav" aria-label="Slides">

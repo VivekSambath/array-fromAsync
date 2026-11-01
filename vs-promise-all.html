@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script src="nav.js" defer></script>
+<script src="demo.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,10 +53,11 @@
 <main class="slide">
   <p class="eyebrow">Compared with Promise.all()</p>
   <h1>Waiting in line vs. all at once</h1>
+  <div class="demo" data-demo="race">
   <div class="timeline" role="img" aria-label="Timeline: Array.fromAsync runs three 1-second tasks one after another for 3 seconds; Promise.all runs them together for 1 second">
     <div class="lane">
       <span class="lane-title">Array.fromAsync(): one after another, about 3 s</span>
-      <div class="track">
+      <div class="track" data-lane="seq">
         <div class="bar" style="left:0;width:33%;top:6px">task 1</div>
         <div class="bar" style="left:33.3%;width:33%;top:48px">task 2</div>
         <div class="bar" style="left:66.6%;width:33%;top:90px">task 3</div>
@@ -63,13 +65,19 @@
     </div>
     <div class="lane">
       <span class="lane-title">Promise.all(): together, about 1 s</span>
-      <div class="track">
+      <div class="track" data-lane="par">
         <div class="bar dim" style="left:0;width:33%;top:6px">task 1</div>
         <div class="bar dim" style="left:0;width:33%;top:48px">task 2</div>
         <div class="bar dim" style="left:0;width:33%;top:90px">task 3</div>
       </div>
     </div>
     <div class="axis"><span>0 s</span><span>1 s</span><span>2 s</span><span>3 s</span></div>
+  </div>
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run both</button>
+      <span class="demo-note">Three fake tasks, 1 s each</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to race them live.</pre>
   </div>
 
   <nav class="deck-nav" aria-label="Slides">

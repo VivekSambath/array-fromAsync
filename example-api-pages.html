@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script src="nav.js" defer></script>
+<script src="demo.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -70,6 +71,13 @@
 
 <span class="k">const</span> allUsers = <span class="k">await</span> <span class="f">Array.fromAsync</span>(<span class="f">getUsers</span>());
 <span class="c">// [{ id: 1, … }, { id: 2, … }, …]</span></code></pre>
+  </div>
+  <div class="demo" data-demo="pages">
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run simulation</button>
+      <span class="demo-note">Fake API: 2 users per page, 300 ms per request</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to watch each page load, one after another.</pre>
   </div>
 
   <nav class="deck-nav" aria-label="Slides">

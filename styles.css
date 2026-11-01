@@ -211,6 +211,54 @@ pre {
   white-space: nowrap;
 }
 .bar.dim { background: var(--bar-dim); color: var(--bar-dim-text); }
+.bar { overflow: hidden; }
+
+/* ---------- live demos ---------- */
+.demo { display: flex; flex-direction: column; gap: 12px; }
+
+.demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-2);
+}
+.demo-bar label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.demo-bar input { accent-color: var(--text-2); width: 16px; height: 16px; }
+.demo-bar select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+.demo-note { color: var(--muted); }
+
+.run {
+  font: 600 14px var(--mono);
+  color: var(--text);
+  background: var(--raised);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.run:hover, .run:focus-visible { border-color: var(--text); }
+.run:disabled { opacity: 0.5; cursor: wait; }
+
+.console {
+  font-size: 14px;
+  min-height: 96px;
+  max-height: 210px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  color: var(--muted);
+}
+.console .ok { color: var(--text); }
+.console .err { color: var(--text); font-weight: 600; }
 .axis {
   display: flex;
   justify-content: space-between;

@@ -95,6 +95,13 @@ const slides = [
 
 <span class="k">const</span> allUsers = <span class="k">await</span> <span class="f">Array.fromAsync</span>(<span class="f">getUsers</span>());
 <span class="c">// [{ id: 1, … }, { id: 2, … }, …]</span></code></pre>
+  </div>
+  <div class="demo" data-demo="pages">
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run simulation</button>
+      <span class="demo-note">Fake API: 2 users per page, 300 ms per request</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to watch each page load, one after another.</pre>
   </div>`,
   },
   {
@@ -120,6 +127,20 @@ const slides = [
   },
 );
 <span class="c">// [{ id: 101, name: "Mug" }, …]</span></code></pre>
+  </div>
+  <div class="demo" data-demo="cart">
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run simulation</button>
+      <label><input type="checkbox" name="fail"> Make 102 fail</label>
+      <label>On error:
+        <select name="mode">
+          <option value="stop">no catch (stops)</option>
+          <option value="skip">catch in mapFn (skips)</option>
+        </select>
+      </label>
+      <span class="demo-note">Fake API, 300 ms per request</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to watch one request at a time. Tick “Make 102 fail” to see what an error does.</pre>
   </div>`,
   },
   {
@@ -130,10 +151,11 @@ const slides = [
     body: `
   <p class="eyebrow">Compared with Promise.all()</p>
   <h1>Waiting in line vs. all at once</h1>
+  <div class="demo" data-demo="race">
   <div class="timeline" role="img" aria-label="Timeline: Array.fromAsync runs three 1-second tasks one after another for 3 seconds; Promise.all runs them together for 1 second">
     <div class="lane">
       <span class="lane-title">Array.fromAsync(): one after another, about 3 s</span>
-      <div class="track">
+      <div class="track" data-lane="seq">
         <div class="bar" style="left:0;width:33%;top:6px">task 1</div>
         <div class="bar" style="left:33.3%;width:33%;top:48px">task 2</div>
         <div class="bar" style="left:66.6%;width:33%;top:90px">task 3</div>
@@ -141,13 +163,19 @@ const slides = [
     </div>
     <div class="lane">
       <span class="lane-title">Promise.all(): together, about 1 s</span>
-      <div class="track">
+      <div class="track" data-lane="par">
         <div class="bar dim" style="left:0;width:33%;top:6px">task 1</div>
         <div class="bar dim" style="left:0;width:33%;top:48px">task 2</div>
         <div class="bar dim" style="left:0;width:33%;top:90px">task 3</div>
       </div>
     </div>
     <div class="axis"><span>0 s</span><span>1 s</span><span>2 s</span><span>3 s</span></div>
+  </div>
+    <div class="demo-bar">
+      <button class="run" type="button">▶ Run both</button>
+      <span class="demo-note">Three fake tasks, 1 s each</span>
+    </div>
+    <pre class="console" aria-live="polite">Press Run to race them live.</pre>
   </div>`,
   },
   {
@@ -198,7 +226,7 @@ const slides = [
   <div class="grid">
     <div class="card">
       <h2>Errors</h2>
-      <p>If any item or <code>mapFn</code> fails, the whole promise rejects. Wrap it in <code>try / catch</code>.</p>
+      <p>The first failure stops the loop and rejects the promise, with no partial results. To skip bad items instead, catch inside <code>mapFn</code>.</p>
     </div>
     <div class="card">
       <h2>Infinite sources</h2>
@@ -207,6 +235,7 @@ const slides = [
     <div class="card">
       <h2>Support</h2>
       <p>Chrome / Edge 121, Firefox 115, Safari 16.4, Node.js 22.</p>
+      <p><a href="https://caniuse.com/mdn-javascript_builtins_array_fromasync" target="_blank" rel="noopener">Check on Can I use ↗</a></p>
     </div>
   </div>
   <p>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" rel="noopener">MDN · Array.fromAsync()</a></p>`,
@@ -287,7 +316,7 @@ ${prev ? `<link rel="prev" href="${url(prev.file)}">\n` : ""}${next ? `<link rel
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="styles.css">
-<script src="nav.js" defer></script>${jsonLd}
+<script src="nav.js" defer></script>${/data-demo=/.test(s.body) ? `\n<script src="demo.js" defer></script>` : ""}${jsonLd}
 </head>
 <body>
 <main class="slide">

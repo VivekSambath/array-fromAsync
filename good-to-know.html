@@ -54,7 +54,7 @@
   <div class="grid">
     <div class="card">
       <h2>Errors</h2>
-      <p>If any item or <code>mapFn</code> fails, the whole promise rejects. Wrap it in <code>try / catch</code>.</p>
+      <p>The first failure stops the loop and rejects the promise, with no partial results. To skip bad items instead, catch inside <code>mapFn</code>.</p>
     </div>
     <div class="card">
       <h2>Infinite sources</h2>
@@ -63,6 +63,7 @@
     <div class="card">
       <h2>Support</h2>
       <p>Chrome / Edge 121, Firefox 115, Safari 16.4, Node.js 22.</p>
+      <p><a href="https://caniuse.com/mdn-javascript_builtins_array_fromasync" target="_blank" rel="noopener">Check on Can I use ↗</a></p>
     </div>
   </div>
   <p>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fromAsync" rel="noopener">MDN · Array.fromAsync()</a></p>
