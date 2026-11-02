@@ -49,8 +49,43 @@ const slides = [
   <ul>
     <li><code>items</code>: what you want to turn into an array</li>
     <li><code>mapFn</code>: optional, changes each item (it can be async)</li>
+    <li><code>thisArg</code>: optional, sets <code>this</code> inside <code>mapFn</code> (rarely needed; arrow functions ignore it)</li>
     <li>It always returns a <code>Promise</code>, so use <code>await</code></li>
   </ul>`,
+  },
+  {
+    file: "this-arg.html",
+    title: "What is thisArg in Array.fromAsync()? Example | Array.fromAsync() explained",
+    description: "thisArg sets the value of this inside mapFn in Array.fromAsync(). See a runnable example with and without it, and why arrow functions ignore it.",
+    nav: "thisArg",
+    body: `
+  <p class="eyebrow">Syntax · thisArg</p>
+  <h1>What <code>thisArg</code> is for</h1>
+  <div class="split">
+    <div class="stack">
+      <p>When <code>mapFn</code> is a regular function that uses <code>this</code>, <code>thisArg</code> tells <code>fromAsync</code> what <code>this</code> should be.</p>
+      <p>Arrow functions ignore it, so most code never needs it.</p>
+      <div class="demo" data-demo="thisarg">
+        <div class="demo-bar">
+          <button class="run" type="button">▶ Run both calls</button>
+        </div>
+        <pre class="console" aria-live="polite">Press Run to compare the call with thisArg and the call without it.</pre>
+      </div>
+    </div>
+<pre><code><span class="k">const</span> pricing = {
+  taxRate: <span class="s">0.2</span>,
+  <span class="k">async</span> <span class="f">addTax</span>(price) {
+    <span class="k">return</span> price * (<span class="s">1</span> + <span class="k">this</span>.taxRate);
+  },
+};
+
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], pricing.addTax, pricing);
+<span class="c">// [12, 24]: this = pricing</span>
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], pricing.addTax);
+<span class="c">// [NaN, NaN]: this is lost</span>
+<span class="c">// arrow function: no thisArg needed</span>
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], (p) =&gt; pricing.<span class="f">addTax</span>(p));</code></pre>
+  </div>`,
   },
   {
     file: "how-it-works.html",

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is thisArg in Array.fromAsync()? Example | Array.fromAsync() explained</title>
+<meta name="description" content="thisArg sets the value of this inside mapFn in Array.fromAsync(). See a runnable example with and without it, and why arrow functions ignore it.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0e10">
+<link rel="canonical" href="https://viveksambath.github.io/array-fromAsync/this-arg.html">
+<link rel="prev" href="https://viveksambath.github.io/array-fromAsync/syntax.html">
+<link rel="next" href="https://viveksambath.github.io/array-fromAsync/how-it-works.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e10'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='%23f4f4f5' text-anchor='middle'%3E[]%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Array.fromAsync() explained">
+<meta property="og:title" content="What is thisArg in Array.fromAsync()? Example | Array.fromAsync() explained">
+<meta property="og:description" content="thisArg sets the value of this inside mapFn in Array.fromAsync(). See a runnable example with and without it, and why arrow functions ignore it.">
+<meta property="og:url" content="https://viveksambath.github.io/array-fromAsync/this-arg.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What is thisArg in Array.fromAsync()? Example | Array.fromAsync() explained">
+<meta name="twitter:description" content="thisArg sets the value of this inside mapFn in Array.fromAsync(). See a runnable example with and without it, and why arrow functions ignore it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js" defer></script>
+<script src="demo.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Array.fromAsync() explained",
+      "item": "https://viveksambath.github.io/array-fromAsync/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "thisArg",
+      "item": "https://viveksambath.github.io/array-fromAsync/this-arg.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="slide">
+  <p class="eyebrow">Syntax · thisArg</p>
+  <h1>What <code>thisArg</code> is for</h1>
+  <div class="split">
+    <div class="stack">
+      <p>When <code>mapFn</code> is a regular function that uses <code>this</code>, <code>thisArg</code> tells <code>fromAsync</code> what <code>this</code> should be.</p>
+      <p>Arrow functions ignore it, so most code never needs it.</p>
+      <div class="demo" data-demo="thisarg">
+        <div class="demo-bar">
+          <button class="run" type="button">▶ Run both calls</button>
+        </div>
+        <pre class="console" aria-live="polite">Press Run to compare the call with thisArg and the call without it.</pre>
+      </div>
+    </div>
+<pre><code><span class="k">const</span> pricing = {
+  taxRate: <span class="s">0.2</span>,
+  <span class="k">async</span> <span class="f">addTax</span>(price) {
+    <span class="k">return</span> price * (<span class="s">1</span> + <span class="k">this</span>.taxRate);
+  },
+};
+
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], pricing.addTax, pricing);
+<span class="c">// [12, 24]: this = pricing</span>
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], pricing.addTax);
+<span class="c">// [NaN, NaN]: this is lost</span>
+<span class="c">// arrow function: no thisArg needed</span>
+<span class="k">await</span> <span class="f">Array.fromAsync</span>([<span class="s">10</span>, <span class="s">20</span>], (p) =&gt; pricing.<span class="f">addTax</span>(p));</code></pre>
+  </div>
+
+  <nav class="deck-nav" aria-label="Slides">
+    <a rel="prev" href="syntax.html" aria-label="Previous: Syntax">← <span class="nav-label">Syntax</span></a>
+    <span>04 / 11</span>
+    <a rel="next" href="how-it-works.html" aria-label="Next: How it works"><span class="nav-label">How it works</span> →</a>
+  </nav>
+</main>
+</body>
+</html>
