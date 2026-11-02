@@ -53,30 +53,6 @@ async function fakeFetch(url, log, failId = null) {
 
 // ---------- demos ----------
 const demos = {
-  // Syntax slide: the same mapFn with and without thisArg.
-  async thisarg(root, c) {
-    const pricing = {
-      taxRate: 0.2,
-      async addTax(price) {
-        return price * (1 + this.taxRate);
-      },
-    };
-
-    const withThis = await Array.fromAsync([10, 20], pricing.addTax, pricing);
-    c.log(`with thisArg:    ${JSON.stringify(withThis)}`, "ok");
-
-    try {
-      const withoutThis = await Array.fromAsync([10, 20], pricing.addTax);
-      c.log(`without thisArg: [${withoutThis.join(", ")}]  this.taxRate was undefined`, "err");
-    } catch (err) {
-      // In strict mode `this` is undefined, so reading taxRate throws instead.
-      c.log(`without thisArg: ${err.name}: ${err.message}`, "err");
-    }
-
-    const withArrow = await Array.fromAsync([10, 20], (p) => pricing.addTax(p));
-    c.log(`arrow function:  ${JSON.stringify(withArrow)}`, "ok");
-  },
-
   // Real example 1: paginated API through an async generator.
   async pages(root, c) {
     async function* getUsers() {
